@@ -1,0 +1,16 @@
+{
+  "author": "yazgazan <yazgazan@gmail.com>",
+  "name": "genetics",
+  "description": "Genetic Algorithm",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:yazgazan/genetics.git"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
