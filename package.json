@@ -3,14 +3,11 @@
   "name": "genetics",
   "description": "Genetic Algorithm",
   "version": "0.1.0",
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:yazgazan/genetics.git"
+  "main": "lib/genetics",
+  "engines": {
+    "node": "~0.6.8"
   },
   "dependencies": {},
   "devDependencies": {},
-  "optionalDependencies": {},
-  "engines": {
-    "node": "*"
-  }
+  "optionalDependencies": {}
 }
