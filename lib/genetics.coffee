@@ -1,5 +1,5 @@
 
-Solution = (require './sol.coffee').Solution
+Solution = (require './sol').Solution
 
 class Genetic
   constructor: (@SolType, @totalPop = 100, @keepPop = 0) ->
