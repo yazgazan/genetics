@@ -55,7 +55,7 @@ class Genetic
     return
 
   selectRWS2: ->
-    @selectRWS null
+    @selectRWS -1
     return
 
   selectSUS: ->

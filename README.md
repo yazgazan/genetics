@@ -88,3 +88,28 @@ current generation
   - else @select() is called, an exception is threw if @pop.length != @totalPop
   - @gen is incremented
 
+##Genetics.totalFit()
+ - return total Fitness of @pop
+
+##Genetics.rws(f = null)
+ - return a random solution selected by roulette wheel
+ - f is a random number, auto-generated if f == null
+
+##Genetics.selectRWS()
+ - select by roulette wheel sampling
+ - using this selection method, Solution.eval must return a value in [0,1]
+ - implementation may looks like :
+    select: -> @selectRWS()
+
+##Genetics.selectRWS2() (cheated :p)
+ - select by roulette wheel sampling, with higher probability for bests fit
+ - using this selection method, Solution.eval must return a value in [0,1]
+ - implementation may looks like :
+    select: -> @selectRWS2()
+
+##Genetics.selectSUS()
+ - select by Stochastic universal sampling
+ - using this selection method, Solution.eval must return a value in [0,1]
+ - implementation may looks like :
+    select: -> @selectSUS()
+
