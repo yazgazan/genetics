@@ -4,7 +4,7 @@ Genetic = genetics.Genetic
 Solution = genetics.Solution
 
 var mod = 1000;
-var ratio = 1;
+var ratio = 100;
 
 modb = Math.round(mod / ratio);
 moda = modb - 1;
@@ -13,9 +13,9 @@ best = mod * mod;
 var Sol = Solution;
 
 Sol.prototype.random = function () {
-  this.a = Math.round(Math.random() * 1000) % modb;
-  this.b = Math.round(Math.random() * 1000) % modb;
-  this.c = Math.round(Math.random() * 1000) % modb;
+  this.a = Math.round(Math.random() * 1000) % mod;
+  this.b = Math.round(Math.random() * 1000) % mod;
+  this.c = Math.round(Math.random() * 1000) % mod;
   return;
 }
 
@@ -41,17 +41,22 @@ Sol.prototype.mutate = function () {
 }
 
 Sol.prototype.eval = function () {
-  this.fit = this.a * this.b - this.c;
+  this.fit = (this.a * this.b - this.c) / best;
   return;
 }
 
 var Gene = Genetic;
 
 Gene.prototype.end = function () {
-  return (this.bestfit().fit >= best);
+  console.log(this.gen + ', ' + this.bestfit().fit);
+  return (this.gen == 100 || this.bestfit().fit >= 1);
 }
 
-gen = new Gene(Sol, 100);
+Gene.prototype.select = function () {
+  this.selectSUS();
+}
+
+gen = new Gene(Sol, 10000);
 gen.init();
 
 gen.eval();

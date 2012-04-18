@@ -4,7 +4,7 @@ Genetic = genetics.Genetic
 Solution = genetics.Solution
 
 mod = 1000
-ratio = 1
+ratio = 100
 
 modb = Math.round(mod / ratio)
 moda = mod - 1
@@ -12,9 +12,9 @@ best = mod * mod
 
 class Sol extends Solution
   random: ->
-    @a = Math.round(Math.random() * 1000) % modb
-    @b = Math.round(Math.random() * 1000) % modb
-    @c = Math.round(Math.random() * 1000) % modb
+    @a = Math.round(Math.random() * 1000) % mod
+    @b = Math.round(Math.random() * 1000) % mod
+    @c = Math.round(Math.random() * 1000) % mod
     return
 
   crossOver: (sola, solb) ->
@@ -37,14 +37,18 @@ class Sol extends Solution
     return newSol
   
   eval: ->
-    @fit = @a * @b - @c
+    @fit = (@a * @b - @c) / best
     return
 
 class Gene extends Genetic
   end: ->
-    return (@bestfit().fit >= best)
+    console.log @gen + ', ' + @bestfit().fit
+    return @gen == 100 or @bestfit().fit >= 1
 
-gen = new Gene Sol, 100
+  select: ->
+    @selectSUS()
+
+gen = new Gene Sol, 10000
 gen.init()
 
 gen.eval()
