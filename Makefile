@@ -1,5 +1,5 @@
 
-all: js install
+all: js
 
 js: clean
 	coffee -bc lib/genetics.coffee
@@ -10,6 +10,6 @@ clean:
 	rm -rvf lib/genetics.js
 	rm -rvf lib/sol.js
 
-install:
+install: js
 	cd .. && npm install ./genetics
 

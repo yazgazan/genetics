@@ -1,13 +1,15 @@
 {
-  "author": "yazgazan <yazgazan@gmail.com>",
   "name": "genetics",
   "description": "Genetic Algorithm",
   "version": "0.1.0",
+  "author": "yazgazan <yazgazan@gmail.com>",
   "main": "lib/genetics",
-  "engines": {
-    "node": "~0.6.8"
+  "keywords": ["genetic"],
+  "repository": "git://github.com/yazgazan/genetics.git",
+  "scripts": {
+    "preinstall": "make"
   },
-  "dependencies": {},
-  "devDependencies": {},
-  "optionalDependencies": {}
+  "engines": {
+    "node": "*"
+  }
 }
