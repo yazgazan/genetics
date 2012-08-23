@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/yazgazan/genetics.png)](http://travis-ci.org/yazgazan/genetics)
 #Genetics
 
 Genetics is a genetic algorithm implementation for [node](http://nodejs.org);  
