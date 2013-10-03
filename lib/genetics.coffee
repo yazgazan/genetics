@@ -50,7 +50,6 @@ class Genetic
     @sort()
     newPop = new Array
     newPop.push @rws(k) for i in [1..@totalPop]
-    delete @pop
     @pop = newPop
     return
 
@@ -65,7 +64,6 @@ class Genetic
     (ptrs.push (start + i * (totalFit / @totalPop))) for i in [0..(@totalPop - 1)]
     newPop = new Array
     newPop.push @rws(f) for f in ptrs
-    delete @pop
     @pop = newPop
     return
 
@@ -104,7 +102,7 @@ class Genetic
         oldPop = @pop
         @pop = new Array
         @pop.push oldPop[i] for i in [0..(@totalPop - 1)]
-        delete oldPop
+        oldPop = null
       @gen++
 
 exports.Genetic = Genetic
