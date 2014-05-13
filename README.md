@@ -1,86 +1,110 @@
+
 [![build status](https://secure.travis-ci.org/yazgazan/genetics.png)](http://travis-ci.org/yazgazan/genetics)
-#Genetics
+
+# Genetics
 
 Genetics is a genetic algorithm implementation for [node](http://nodejs.org);  
-Genetics is written in [CoffeeScript](http://coffeescript.org/) but can be used in JavaScript.
+Genetics is written in [CoffeeScript](http://coffeescript.org/) (it can be used in JavaScript as well).
 
-#Installation
-    npm install Genetics
+# Installation
 
-#Usage
-See test/test.coffee for quick start.
+```bash
+npm install Genetics
+```
 
-##Class Genetic(solType, totalPop = 100, keepPop = 0)
+# Usage
+
+See `test/test.coffee` for a quick start.
+
+## Class Genetic(solType, totalPop = 100, keepPop = 0)
+
 solType must be an implementation of class Solution()
 totalPop is the total number of solutions
 keepPop is the number of solutions kept after selection (by default : totalPop / 2)
 This class must implement the folowing method :
 after implementation, Genetic.init() and Genetic.run() must be called
 
-###Genetic.end()
+### Genetic.end()
+
 return true if end Conditions is reached
 else return false
 
-###Genetic.select() (optional)
+### Genetic.select() (optional)
+
 Select Solutions to be kept from @pop
 After the Selection, @pop.length must equal @totalPop
 
 
-##Class Solution()
+## Class Solution()
+
 This class must implement the following methods :
 
-###Solution.random()
+### Solution.random()
+
 Generate a random solution.
 
-###Solution.crossOver(sol1, sol2)
+### Solution.crossOver(sol1, sol2)
+
 Generate a solution from sol1 and sol2
 
-###Solution.mutate()
+### Solution.mutate()
+
 Return a mutated solution
 
-###Solution.eval()
+### Solution.eval()
+
 Set Solution.fit to a number representing the solution's fitness
 
-#Documentation
+# Documentation 
 
-##Genetics.pop\<Array>
+
+## Genetics.pop\<Array>
+
 contain all solutions
 
-##Genetics.gen\<Number>
+## Genetics.gen\<Number>
+
 current generation
 
-##Genetics.constructor(@solType, @totalPop = 100, @keepPop = 0)
- - set @solType, @totalPop and @keepPop
- - if @keepPop == 0, then @keepPop = @totalPop / 2
- - create an empty array @pop
+## Genetics.constructor(@solType, @totalPop = 100, @keepPop = 0)
+
+- set @solType, @totalPop and @keepPop
+- if @keepPop == 0, then @keepPop = @totalPop / 2
+- create an empty array @pop
 
 
-##Genetics.init()
- - generate @totalPop solutions calling Solution.random()
- - solutions are pushed into @pop
+## Genetics.init()
 
- 
-##Genetics.sort()
- - sort @pop by fitness 
- - solutions must have been evaluated before calling @sort()
+- generate @totalPop solutions calling Solution.random()
+- solutions are pushed into @pop
 
  
-##Genetics.bestfit()
- - return bestfit after calling @sort()
+## Genetics.sort()
+
+- sort @pop by fitness 
+- solutions must have been evaluated before calling @sort()
+
+ 
+## Genetics.bestfit()
+
+- return bestfit after calling @sort()
 
 
-##Genetics.eval()
- - call Solution.eval() for each solution in @pop
+## Genetics.eval()
+
+- call Solution.eval() for each solution in @pop
 
 
-##Genetics.random()
- - return a randomly chose solution from @pop
+## Genetics.random()
+
+- return a randomly chose solution from @pop
 
 
-##Genetics.run()
- - run genetic algorithm
- - initial pop is eval
- - initialize @gen to 0
+## Genetics.run()
+
+- run genetic algorithm
+- initial pop is eval
+- initialize @gen to 0
   - @end() is checked
   - newPop is generated with Solution.crossOver() and Solution.mutate()
   - newPop is eval by calling Solution.eval() for each new solution
@@ -89,28 +113,33 @@ current generation
   - else @select() is called, an exception is threw if @pop.length != @totalPop
   - @gen is incremented
 
-##Genetics.totalFit()
- - return total Fitness of @pop
+## Genetics.totalFit()
 
-##Genetics.rws(f = null)
- - return a random solution selected by roulette wheel
- - f is a random number, auto-generated if f == null
+- return total Fitness of @pop
 
-##Genetics.selectRWS()
- - select by roulette wheel sampling
- - using this selection method, Solution.eval must return a value in [0,1]
- - implementation may looks like :
-    select: -> @selectRWS()
+## Genetics.rws(f = null)
 
-##Genetics.selectRWS2() (cheated :p)
- - select by roulette wheel sampling, with higher probability for bests fit
- - using this selection method, Solution.eval must return a value in [0,1]
- - implementation may looks like :
-    select: -> @selectRWS2()
+- return a random solution selected by roulette wheel
+- f is a random number, auto-generated if f == null
 
-##Genetics.selectSUS()
- - select by Stochastic universal sampling
- - using this selection method, Solution.eval must return a value in [0,1]
- - implementation may looks like :
-    select: -> @selectSUS()
+## Genetics.selectRWS()
+
+- select by roulette wheel sampling
+- using this selection method, Solution.eval must return a value in [0,1]
+- implementation may looks like :
+  `select: -> @selectRWS()`
+
+## Genetics.selectRWS2() (cheated :p)
+
+- select by roulette wheel sampling, with higher probability for bests fit
+- using this selection method, Solution.eval must return a value in [0,1]
+- implementation may looks like :
+  `select: -> @selectRWS2()`
+
+## Genetics.selectSUS()
+
+- select by Stochastic universal sampling
+- using this selection method, Solution.eval must return a value in [0,1]
+- implementation may looks like :
+  `select: -> @selectSUS()`
 
