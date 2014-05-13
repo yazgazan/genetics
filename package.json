@@ -1,7 +1,7 @@
 {
   "name": "genetics",
   "description": "Genetic Algorithm",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "author": "yazgazan <yazgazan@gmail.com>",
   "main": "lib/genetics",
   "keywords": ["genetic"],
