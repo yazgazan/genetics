@@ -2,7 +2,7 @@
 Solution = (require './sol').Solution
 
 class Genetic
-  constructor: (@SolType, @totalPop = 100, @keepPop = 0) ->
+  constructor: (@SolType, @totalPop = 100, @keepPop = 0, @crossover = 0.5) ->
     @keepPop = @totalPop / 2 if @keepPop == 0
     @pop = new Array
     return
@@ -75,7 +75,7 @@ class Genetic
         @gen--
         return
       needed = @totalPop - @keepPop
-      need1 = Math.round(needed / 2)
+      need1 = Math.round(needed * @crossover)
       need2 = needed - need1
       npop = new Array
       @sort()
