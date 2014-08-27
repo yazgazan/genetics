@@ -2,8 +2,8 @@
 Solution = (require './sol').Solution
 
 class Genetic
-  constructor: (@SolType, @totalPop = 100, @keepPop = 0, @crossover = 0.5) ->
-    @keepPop = @totalPop / 2 if @keepPop == 0
+  constructor: (@SolType, @totalPop = 100, @keepPop = -1, @crossover = 0.5) ->
+    @keepPop = @totalPop / 2 if @keepPop == -1
     @pop = new Array
     return
 
