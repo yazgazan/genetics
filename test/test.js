@@ -53,16 +53,16 @@ Gene.prototype.end = function () {
 }
 
 Gene.prototype.select = function () {
-  this.selectSUS();
+  this.selectRWS();
 }
 
-gen = new Gene(Sol, 10000);
+gen = new Gene(Sol, 1000, 250, 0.8, 0.6);
 gen.init();
 
 gen.eval();
-console.log(gen.bestfit());
+//console.log(gen.bestfit());
 gen.run();
 
-console.log(gen.bestfit());
+//console.log(gen.bestfit());
 console.log('last gen :' + gen.gen);
 
